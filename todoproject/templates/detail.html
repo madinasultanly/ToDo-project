@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<!-- {{todo.id}}
+{{todo.title}}
+{{todo.description}}
+{{todo.status}}
+{{todo.finishdate}}
+{{todo.user}} -->
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Basliq</th>
+        <th scope="col">Aciqlama</th>
+        <th scope="col">Status</th>
+        <th scope="col">Son gun</th>
+        <th scope="col">User</th>
+        
+
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <th scope="row">
+          {{todo.id}}
+        </th>
+        <td >
+            {{todo.title}}
+        </td>
+        <td >
+          {{todo.description}}
+        </td>
+        <td>
+          {{todo.status}}
+        </td>
+      
+        <td>
+            {{todo.finishdate}}
+        </td>
+        <td>
+          {{todo.user}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock body %}

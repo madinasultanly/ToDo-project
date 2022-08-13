@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+<p> Xoş gəldiniz <small>{{ request.user.username }}<small></p>
+<hr>
+<a href="{% url 'to_do_app:add_task'%}" class="btn btn-primary">Task Əlavə Et</a>
+<hr>
+
+{% if todos %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Başlıq</th>
+                <th scope="col">Bitis tarixi</th>
+                <th scope="col">Status</th>
+                <th scope="col">Əməliyyatlar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for todo in todos %}
+                <tr>
+                    <th scope="row">{{to.id}}</th>
+                    <td> <a href="{% url 'to_do_app:detail' todo.id %}">{{todo.title}}</a></td>
+                    <td>{{todo.finishdate}}</td>
+                    <td>{{todo.status}}</td>
+
+                    <td><a href="{% url 'to_do_app:done' todo.id %}" class="btn btn-success">Tamamlandi</a></td>
+                    <td><a href="{% url 'to_do_app:edit' todo.id %}" class="btn btn-primary">Redakte et</a></td>
+                    <td><a href="{% url 'to_do_app:delete' todo.id %}" class="btn btn-danger">Sil</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+{% else %}
+    <div class="alert alert-danger">
+        Hələ ki task qeyd edilməyib 
+    </div>
+{% endif %}
+
+{% endblock body %}
